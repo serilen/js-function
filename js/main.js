@@ -97,31 +97,46 @@ leadOutNumber(a, 100);*/
 //Вывести простые числа.
 //Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1. Другими словами, n>1 – простое, если при делении на любое число от 2 до n-1 есть остаток. Создайте функцию, которая выводит все простые числа из интервала, который задает пользователь.
 
-/*let numMax = prompt("Введите число границу интервала");
-function isPrime(numMax) {
-    if (isNaN(numMax) || numMax % 1 !== 0) {
-    	return false;
-    }
-    numMax = Math.abs(numMax); //*negative values can be primes
-    if (numMax === 0 || numMax === 1) {
-    	return false;
-    }
-    let maxFactorNum = Math.sqrt(numMax);
-    for (let i = 2; i <= maxFactorNum; i++) {
-    	if (numMax % i === 0) {
-    		return false;
-    	}
-    }
-    return true;
- }
+let numMin = prompt("Введите число нижнюю границу интервала");
+let numMax;
 
-let primaryNumber = [];
-for (let i = 2; i <= numMax; i++) {
-  if(isPrime(i)) 
-    primaryNumber.push(i);
+function inputValid(num) {
+	if (isNaN(+num)) {
+		alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
+		return inputValid;
+	}  else if (num % 1 !==0) {
+		alert("Введите целое число");
+		return inputValid;
+	} else if (num === null) {
+		alert("До встречи снова!");
+		return inputValid;
+	} else if (num.trim() === '') {
+		alert("Значение не может быть пустым!");
+		return inputValid;
+	} else {
+		numMax = prompt("Введите второе число больше первого");
+	} 
 }
-// вывести в консоль простые числа от 2 до 100
-console.log(primaryNumber);*/
+
+
+if (inputValid(numMin)) {
+	inputValid(numMax);
+} else if (+numMin >= +numMax) {
+	alert("Второе число должно быть больше первого")
+} else {
+	showPrimes(numMin, numMax);
+}
+
+function showPrimes(a, b) {
+	nextPrime: for (let i = 2; i < b; i++) {
+		if (i > a) {
+			for (let j = 2; j < i; j++) {
+				if (i % j == 0) continue nextPrime;
+			}
+    console.log( i ); // простое
+  }
+}
+}
 
 
 })();
