@@ -17,32 +17,47 @@ rolldice();*/
 //Усовершенствовать функцию случайного числа: вывести случайное число между двумя введенными пользователем!
 //--------------------------------------------------------------------------
 
-/*function showRandom(numberFirst, numberSecond) {
-	numberFirst = prompt("Введите первое число");
+ /*function isValidNumber(number) {
+    let isValid = false;
 
-	if (isNaN(+numberFirst)) {
-		alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
-	} else if (numberFirst.trim() === '') {
-		alert("Значение не может быть пустым!");
-	} else if (numberFirst === null) {
-		alert("До встречи снова!");
-	} else {
-		let numberSecond = prompt("Введите второе число");
+    if (number === null) {
+      alert("До встречи снова!");
+    } else if (isNaN(+number)) {
+      alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
+    } else if (number.trim() === '') {
+      alert("Значение не может быть пустым!");
+    } else {
+      isValid = true;
+    }
 
-		if (isNaN(+numberSecond)) {
-			alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
-		} else if (numberFirst >= numberSecond) {
-			alert("Значение второго числа должно быть больше первого!");
-		} else if (numberSecond.trim() === '') {
-			alert("Значение не может быть пустым!");
-		} else if (numberSecond === null) {
-			alert("До встречи снова!");
-		} else {
-			alert (Math.floor(Math.random() * (+numberSecond - +numberFirst + 1) + +numberFirst));
-		}
-	}
-}
-showRandom();*/
+    return isValid;
+  }
+
+  function getRandomNumber(min, max) {
+     return Math.floor(min + Math.random() * (max + 1 - min))
+  }
+
+  function showRandom() {
+    let numberFirst = prompt("Введите первое целое число");
+
+    if (isValidNumber(numberFirst)) {
+      let numberSecond = prompt("Введите второе целое число больше - " + numberFirst);
+
+      if (isValidNumber(numberSecond)) {
+        numberFirst = +numberFirst;
+        numberSecond = +numberSecond;
+        if (numberFirst >= numberSecond) {
+          alert("Значение второго числа должно быть больше первого!");
+        } else {
+          alert(getRandomNumber(numberFirst, numberSecond));
+        }
+      }
+    }
+  }
+
+  showRandom();*/
+
+
 
 //Напишите функцию ucFirst(str), которая возвращает строку str с заглавным первым символом, например:
 //ucFirst("вася") == "Вася";
@@ -51,6 +66,7 @@ showRandom();*/
 //--------------------------------------------------------------------------
 
 /*function ucFirst(str) {
+	str = str.trim();
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 alert(ucFirst("вася"));
@@ -76,55 +92,47 @@ alert(min(2, 5));
 alert(min(3, -1));
 alert(min(1, 1));*/
 
-
+/*function min(a, b) {
+  return (a < b) ? a : b;
+}*/
 
 
 //Напишите функцию в которой цикл предлагает prompt ввести число, большее заданного аргумента функции (например 100). Если посетитель ввёл другое число – попросить ввести ещё раз, и так далее. Цикл должен спрашивать число пока либо посетитель не введёт число, большее 100, либо не нажмёт кнопку Cancel (ESC). Предполагается, что посетитель вводит только числа. Предусмотреть обработку нечисловых строк в этой задаче
 //-----------------------------------------------------------------------------
 
-/*let a;
-function leadOutNumber(a, b) {
-	while (true) {
-		let a = prompt('Введите число больше 100', '');
-		if(a > b || a === null) break;
-	}
+/*function leadOutNumber() {
+  const b = 100;
+  while (true) {
+    let a = prompt('Введите число больше ' + b, '');
+    a = a.trim();
+    a = parseInt(a);
+    if(a > b || a === null) break;
+  }
 }
 
-leadOutNumber(a, 100);*/
+leadOutNumber();*/
 
 
 
 //Вывести простые числа.
 //Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1. Другими словами, n>1 – простое, если при делении на любое число от 2 до n-1 есть остаток. Создайте функцию, которая выводит все простые числа из интервала, который задает пользователь.
 
-let numMin = prompt("Введите число нижнюю границу интервала");
-let numMax;
+/*function isValidNumber(number) {
+	let isValid = false;
 
-function inputValid(num) {
-	if (isNaN(+num)) {
-		alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
-		return inputValid;
-	}  else if (num % 1 !==0) {
-		alert("Введите целое число");
-		return inputValid;
-	} else if (num === null) {
+	if (number === null) {
 		alert("До встречи снова!");
-		return inputValid;
-	} else if (num.trim() === '') {
+	} else if (isNaN(+number)) {
+		alert("Значение ДОЛЖНО быть ЧИСЛОВЫМ");
+	} else if (number.trim() === '') {
 		alert("Значение не может быть пустым!");
-		return inputValid;
+	} else if (number % 1 !==0) {
+		alert("Введите целое число");
 	} else {
-		numMax = prompt("Введите второе число больше первого");
-	} 
-}
+		isValid = true;
+	}
 
-
-if (inputValid(numMin)) {
-	inputValid(numMax);
-} else if (+numMin >= +numMax) {
-	alert("Второе число должно быть больше первого")
-} else {
-	showPrimes(numMin, numMax);
+	return isValid;
 }
 
 function showPrimes(a, b) {
@@ -138,6 +146,17 @@ function showPrimes(a, b) {
 }
 }
 
+
+let numMin = prompt("Введите число нижнюю границу интервала");
+if (isValidNumber(numMin)) {
+	let numMax = prompt("Введите второе число больше первого");
+	isValidNumber(numMax);
+	if (+numMin >= +numMax) {
+		alert("Второе число должно быть больше первого")
+	} else {
+		showPrimes(numMin, numMax);
+	}
+}*/
 
 })();
 
