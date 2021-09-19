@@ -139,7 +139,9 @@ function showPrimes(a, b) {
 	nextPrime: for (let i = 2; i <= b; i++) {
 		if (i >= a) {
 			for (let j = 2; j < i; j++) {
-				if (i % j == 0) continue nextPrime;
+				if (i % j == 0) {
+					continue nextPrime;
+				}
 			}
     console.log( i ); // простое
   }
