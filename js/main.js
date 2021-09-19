@@ -117,7 +117,7 @@ leadOutNumber();*/
 //Вывести простые числа.
 //Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1. Другими словами, n>1 – простое, если при делении на любое число от 2 до n-1 есть остаток. Создайте функцию, которая выводит все простые числа из интервала, который задает пользователь.
 
-/*function isValidNumber(number) {
+function isValidNumber(number) {
 	let isValid = false;
 
 	if (number === null) {
@@ -136,8 +136,8 @@ leadOutNumber();*/
 }
 
 function showPrimes(a, b) {
-	nextPrime: for (let i = 2; i < b; i++) {
-		if (i > a) {
+	nextPrime: for (let i = 2; i <= b; i++) {
+		if (i >= a) {
 			for (let j = 2; j < i; j++) {
 				if (i % j == 0) continue nextPrime;
 			}
@@ -156,7 +156,7 @@ if (isValidNumber(numMin)) {
 	} else {
 		showPrimes(numMin, numMax);
 	}
-}*/
+}
 
 })();
 
