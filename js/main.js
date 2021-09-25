@@ -128,6 +128,8 @@ function isValidNumber(number) {
 		alert("Значение не может быть пустым!");
 	} else if (number % 1 !==0) {
 		alert("Введите целое число");
+	} else if (number <= 1) {
+		alert("Число должно быть больше 1");
 	} else {
 		isValid = true;
 	}
@@ -136,29 +138,29 @@ function isValidNumber(number) {
 }
 
 function showPrimes(a, b) {
-	nextPrime: for (let i = 2; i <= b; i++) {
-		if (i >= a) {
-			for (let j = 2; j < i; j++) {
-				if (i % j == 0) {
-					continue nextPrime;
-				}
-			}
-    console.log( i ); // простое
-  }
-}
-}
+	for (let i = +a; i <= +b; i++) {
+
+		for (var j = 2; j < i; j++) {
+			if (i % j == 0) break;
+		}
+
+            if (j == i) { console.log(i); } // простое
+          }
+        }
 
 
-let numMin = prompt("Введите число нижнюю границу интервала");
-if (isValidNumber(numMin)) {
-	let numMax = prompt("Введите второе число больше первого");
-	isValidNumber(numMax);
-	if (+numMin >= +numMax) {
-		alert("Второе число должно быть больше первого")
-	} else {
-		showPrimes(numMin, numMax);
-	}
-}
+        let numMin = prompt("Введите натуральное число больше 1");
+        if (isValidNumber(numMin)) {
+        	let numMax = prompt("Введите второе число больше первого");
+        	if (isValidNumber(numMax)) {
+        		if (+numMin <= +numMax) {
+        			showPrimes(numMin, numMax);
+        		} else {
+        			alert("Второе число должно быть больше первого")
+        		}
+        	}
+        }
 
-})();
+
+      })();
 
